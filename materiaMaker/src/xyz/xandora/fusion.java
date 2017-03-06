@@ -10,11 +10,14 @@ public class fusion {
 	static void ruleOne(materia materiaOne, materia materiaTwo){
 		if (materiaOne.materiaGrade == materiaTwo.materiaGrade && materiaOne.materiaLevel == materiaTwo.materiaLevel) {
 			baseMateria = materiaOne;
-			System.out.println("ruleOne: " + baseMateria.materiaName);
+			ruleFour(materiaOne, materiaTwo);
+			System.out.print("ruleOne (base materia): ");
+			materia.getMateriaName(baseMateria.materiaClass, baseMateria.materiaGrade);
 		} else {
-			//There are exceptions to this rule, to be added.
-			System.out.println("Else case!");
+			ruleTwo(materiaOne, materiaTwo);
+			System.out.println("ruleOne (base materia): Skipped, moving to ruleTwo.");
 		}
+		
 	}
 
 	//If the grades are the same between both Materia but their levels are
@@ -23,13 +26,18 @@ public class fusion {
 		if (materiaOne.materiaGrade == materiaTwo.materiaGrade){
 			if (materiaOne.materiaLevel > materiaTwo.materiaLevel){
 				baseMateria = materiaOne;
-				System.out.println("ruleTwo (base materia): " + baseMateria.materiaName);
+				ruleFour(materiaOne, materiaTwo);
+				System.out.print("ruleTwo (base materia): ");
+				materia.getMateriaName(baseMateria.materiaClass, baseMateria.materiaGrade);
 			} else if (materiaTwo.materiaLevel > materiaOne.materiaLevel){
 				baseMateria = materiaTwo;
-				System.out.println("ruleTwo (base materia): " + baseMateria.materiaName);
-			} else {
-				ruleOne(materiaOne, materiaTwo);
-			}
+				ruleFour(materiaOne, materiaTwo);
+				System.out.print("ruleTwo (base materia): ");
+				materia.getMateriaName(baseMateria.materiaClass, baseMateria.materiaGrade);
+			} 
+		} else {
+			ruleThree(materiaOne, materiaTwo);
+			System.out.println("RuleTwo (base materia): Skipped, moving to ruleThree.");
 		}
 	}
 	
@@ -38,12 +46,14 @@ public class fusion {
 	static void ruleThree(materia materiaOne, materia materiaTwo){
 		if (materiaOne.materiaGrade > materiaTwo.materiaGrade){
 			baseMateria = materiaOne;
-			System.out.println("ruleThree (determinant): " + baseMateria.materiaName);
+			ruleFour(materiaOne, materiaTwo);
+			System.out.print("ruleThree (determinant): ");
+			materia.getMateriaName(baseMateria.materiaClass, baseMateria.materiaGrade);
 		} else if (materiaOne.materiaGrade < materiaTwo.materiaGrade) {
 			baseMateria = materiaTwo;
-			System.out.println("ruleThree (determinant): " + baseMateria.materiaName);
-		} else {
-			ruleTwo(materiaOne, materiaTwo);
+			ruleFour(materiaOne, materiaTwo);
+			System.out.print("ruleThree (determinant): ");
+			materia.getMateriaName(baseMateria.materiaClass, baseMateria.materiaGrade);
 		}
 	}
 	
@@ -51,14 +61,20 @@ public class fusion {
 	//grade will increase by 1. If both are Master Materia, then the grade
 	//will increase by 2.
 	static void ruleFour(materia materiaOne, materia materiaTwo){
-		if (materiaOne.materiaLevel == 5 || materiaTwo.materiaLevel == 5){
-			outputGrade = Math.max(materiaOne.materiaGrade, materiaTwo.materiaGrade) + 1;
-		} else if (materiaOne.materiaLevel == 5 && materiaTwo.materiaLevel == 5){
+		if (materiaOne.materiaLevel == 5 && materiaTwo.materiaLevel == 5){
 			outputGrade = Math.max(materiaOne.materiaGrade, materiaTwo.materiaGrade) + 2;
+			System.out.print("ruleFour (outputGrade + 2): " + outputGrade + ". Materia will be: ");
+			materia.getMateriaName(baseMateria.materiaClass, outputGrade);
+		} else if (materiaOne.materiaLevel == 5 || materiaTwo.materiaLevel == 5){
+			outputGrade = Math.max(materiaOne.materiaGrade, materiaTwo.materiaGrade) + 1;
+			System.out.print("ruleFour (outputGrade + 1): " + outputGrade + ". Materia will be: ");
+			materia.getMateriaName(baseMateria.materiaClass, outputGrade);
 		} else {
 			outputGrade = outputGrade + 0;
+			System.out.print("ruleFour (outputGrade + 0): " + outputGrade + ". Materia will be: ");
+			materia.getMateriaName(baseMateria.materiaClass, baseMateria.materiaGrade);
 		}
-		System.out.println("ruleFour (grade): " + outputGrade);
+
 	}
 	
 	//An item grade can determine the maximum grade of the resulting Materia.

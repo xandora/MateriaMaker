@@ -19,6 +19,17 @@ public class materia {
 		this.materiaGrade = materiaGrade;
 		this.materiaName = materiaName;
 	}
+	
+	public materia(int materiaLevel, int materiaGrade, String materiaClass) {
+		this.materiaClass = materiaClass;
+		if (materiaLevel > 0 && materiaLevel <= 5) {
+			this.materiaLevel = materiaLevel;
+		} else {
+			throw new IllegalArgumentException("Materia Level out of bounds.");
+		}
+		this.materiaGrade = materiaGrade;
+
+	}
 
 	public static void getMateria(materia materia) {
 		String materiaClass = materia.materiaClass;
@@ -70,6 +81,30 @@ public class materia {
 			materiaName[5] = "Thundaga";
 			materiaName[6] = "Thundaga";
 			materiaName[7] = "Thundaga";
+		}
+		
+		if (materiaClass == "Restorative") {
+			
+			materiaName[0] = "Cure";
+			materiaName[1] = "Cura";
+			materiaName[2] = "Regen";
+			materiaName[3] = "Curaga";
+			materiaName[4] = "Curaga";
+			materiaName[5] = "Curaga";
+			materiaName[6] = "Curaga";
+			materiaName[7] = "Curaga";			
+		}
+		
+		if (materiaClass == "Defensive") {
+			
+			materiaName[0] = "Barrier";
+			materiaName[1] = "Barrier";
+			materiaName[2] = "MBarrier";
+			materiaName[3] = "Elemental Ward";
+			materiaName[4] = "Elemental Ward";
+			materiaName[5] = "Elemental Ward";
+			materiaName[6] = "Wall";
+			materiaName[7] = "Wall";			
 		}
 			
 		System.out.println(materiaName[materiaGrade - 1]);
