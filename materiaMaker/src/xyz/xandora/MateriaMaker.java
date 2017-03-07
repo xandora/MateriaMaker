@@ -4,7 +4,7 @@ public class MateriaMaker {
 	
 	public static void main(String[] args) {
 
-		//Name, Type, Level, Grade, Class
+		// Level, Grade, Class - Name and Type can be inferred from the Grade and Class.
 		materia Fire = new materia(3, 3, "Fire");
 		materia Ice = new materia(4, 1, "Ice");
 		materia Lightning = new materia(4, 3, "Lightning");
