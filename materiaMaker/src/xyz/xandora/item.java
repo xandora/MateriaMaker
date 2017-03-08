@@ -1,11 +1,11 @@
 package xyz.xandora;
 
-public class item {
+class item {
 
-	String itemName;
+	private String itemName;
 	int itemGrade;
 	
-	public item(String itemName, int itemGrade){
+	item(String itemName, int itemGrade){
 		this.itemName = itemName;
 		this.itemGrade = itemGrade;
 	}

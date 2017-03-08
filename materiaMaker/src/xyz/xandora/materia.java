@@ -1,13 +1,15 @@
 package xyz.xandora;
 
+import java.util.Objects;
+
 public class materia {
-		
-	String materiaName;
-	String materiaType;
+
+	private String materiaName;
+	private String materiaType;
 	int materiaLevel;
 	int materiaGrade;
 	String materiaClass;
-	
+
 	public materia(String materiaName,	String materiaType, int materiaLevel, int materiaGrade, String materiaClass) {
 		this.materiaClass = materiaClass;
 		if (materiaLevel > 0 && materiaLevel <= 5) {
@@ -20,7 +22,7 @@ public class materia {
 		this.materiaName = materiaName;
 	}
 	
-	public materia(int materiaLevel, int materiaGrade, String materiaClass) {
+	materia(int materiaLevel, int materiaGrade, String materiaClass) {
 		this.materiaClass = materiaClass;
 		if (materiaLevel > 0 && materiaLevel <= 5) {
 			this.materiaLevel = materiaLevel;
@@ -43,11 +45,11 @@ public class materia {
 		System.out.println();
 	}
 
-	public static void getMateriaName(String materiaClass, int materiaGrade){
+	static String getMateriaName(String materiaClass, int materiaGrade){
 		
 		String[] materiaName = new String[8];
 		
-		if (materiaClass == "Fire") {
+		if ("Fire".equals(materiaClass)){
 
 			materiaName[0] = "Fire";
 			materiaName[1] = "Fire";
@@ -59,7 +61,7 @@ public class materia {
 			materiaName[7] = "Firaga";
 		}
 		
-		if (materiaClass == "Ice") {
+		if ("Ice".equals(materiaClass)) {
 			
 			materiaName[0] = "Blizzard";
 			materiaName[1] = "Blizzard";
@@ -71,7 +73,7 @@ public class materia {
 			materiaName[7] = "Blizzaga";
 		}
 		
-		if (materiaClass == "Lightning") {
+		if ("Lightning".equals(materiaClass)) {
 			
 			materiaName[0] = "Thunder";
 			materiaName[1] = "Thunder";
@@ -83,7 +85,7 @@ public class materia {
 			materiaName[7] = "Thundaga";
 		}
 		
-		if (materiaClass == "Restorative") {
+		if ("Restorative".equals(materiaClass)) {
 			
 			materiaName[0] = "Cure";
 			materiaName[1] = "Cura";
@@ -95,7 +97,7 @@ public class materia {
 			materiaName[7] = "Curaga";			
 		}
 		
-		if (materiaClass == "Defensive") {
+		if ("Defensive".equals(materiaClass)) {
 			
 			materiaName[0] = "Barrier";
 			materiaName[1] = "Barrier";
@@ -107,7 +109,7 @@ public class materia {
 			materiaName[7] = "Wall";			
 		}
 			
-		System.out.println(materiaName[materiaGrade - 1]);
+		return (materiaName[materiaGrade - 1]);
 		
 	}
 	
