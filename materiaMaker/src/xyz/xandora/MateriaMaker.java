@@ -33,15 +33,15 @@ public class MateriaMaker {
 		fusion.ruleOne(Fire, Ice);
 
 		System.out.println();
-		System.out.println("Fire vs. Lightning");
-		fusion.ruleOne(Defend, Lightning);
+		System.out.println("Defend vs. Firaga");
+		fusion.ruleOne(Defend, Firaga);
 
 		System.out.println();
-		System.out.println("Fire vs. Firaga");
+		System.out.println("Fire vs. Cure");
 		fusion.ruleOne(Fire, Cure);
 		
 		System.out.println();
-        System.out.println(materia.getMateriaName(Cure.materiaClass, Cure.materiaGrade));
+        materia.getMateria(Cure);
         System.out.println(materia.getMateriaName(Defend.materiaClass, Defend.materiaGrade));
 
 	}
